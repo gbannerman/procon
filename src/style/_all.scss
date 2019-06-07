@@ -1,0 +1,18 @@
+@import './colors.scss';
+
+input[type="text"] {
+  border: none;
+  border-bottom: 1px solid $color-primary-text;
+  outline: none;
+  font-family: 'Tajawal', sans-serif;
+
+  &:focus {
+    border-bottom-color: $color-primary-dark;
+  }
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+  box-shadow: 1px 1px 2px 1px $color-divider;
+}

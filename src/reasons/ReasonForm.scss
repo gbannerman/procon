@@ -1,0 +1,49 @@
+@import '../style/all';
+
+.ReasonForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 auto;
+    font-family: 'Tajawal', sans-serif;
+
+    .ReasonForm__text {
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .ReasonForm__submit {
+        width: 30px;
+        height: 30px;
+        margin: 10px;
+        border: none;
+        border-radius: 7px;
+        
+        svg {
+            fill: $color-light-text;
+        }
+    }
+
+    &.pros {
+        .ReasonForm__text:focus {
+            border-bottom-color: #388E3C;
+        }
+
+        .ReasonForm__submit {
+            background-color: #388E3C;
+        }
+    }
+
+    &.cons {
+        .ReasonForm__text:focus {
+            border-bottom-color: #D32F2F;
+        }
+
+        .ReasonForm__submit {
+            background-color: #D32F2F;
+        }
+    }
+}

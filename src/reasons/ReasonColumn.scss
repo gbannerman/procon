@@ -1,0 +1,23 @@
+@import '../style/all';
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border-right: 1px solid $color-divider;
+  border-left: 1px solid $color-divider;
+  margin-bottom: 40px;
+
+  .column__title {
+    border-bottom: 1px solid $color-divider;
+    text-transform: uppercase;
+  }
+
+  &.column--left {
+    border-right: 1px solid $color-divider;
+  }
+
+  &.column--right {
+    border-left: 1px solid $color-divider;
+  }
+}

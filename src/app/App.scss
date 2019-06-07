@@ -1,0 +1,55 @@
+.App {
+  .App__content {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 1000px;
+
+    .App__content__decision {
+      margin-bottom: 30px;
+      padding: 10px;
+
+      input {
+        font-size: 20px;
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    .App__content__pros-cons-container {
+      font-size: 18px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: stretch;
+    }
+  }
+}
+
+body {
+  margin: 0;
+  font-family: 'Tajawal', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+
+  input::-webkit-input-placeholder {
+    font-family: 'Tajawal', sans-serif;
+  }
+  
+  input:-ms-input-placeholder {
+    font-family: 'Tajawal', sans-serif;
+  }
+  
+  input:-moz-placeholder {
+    font-family: 'Tajawal', sans-serif;
+  }
+  
+  input::-moz-placeholder {
+    font-family: 'Tajawal', sans-serif;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
