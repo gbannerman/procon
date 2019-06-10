@@ -11,11 +11,11 @@ const App: React.FC = () => {
   const [cons, setCons] = useState<Reason[]>([]);
 
   const addPro = (pro: Reason) => {
-    setPros([...pros, { ...pro, id: pros.length }]);
+    setPros([...pros, { ...pro, id: pros.length + 1 }]);
   }
 
   const addCon = (con: Reason) => {
-    setCons([...cons, { ...con, id: cons.length }]);
+    setCons([...cons, { ...con, id: cons.length + 1 }]);
   }
 
   return (
@@ -26,24 +26,20 @@ const App: React.FC = () => {
           <input type="text" placeholder="Should I order a pizza tonight?" />
         </div>
         <div className="App__content__pros-cons-container">
-          <ReasonColumn>
-            {{
-              className: "pros",
-              title: "Pros",
-              reasons: pros,
-              formOnSubmit: addPro,
-              formButtonIcon: <ThumbsUpSVG />
-            }}
-          </ReasonColumn>
-          <ReasonColumn>
-            {{
-              className: "cons",
-              title: "Cons",
-              reasons: cons,
-              formOnSubmit: addCon,
-              formButtonIcon: <ThumbsDownSVG />
-            }}
-          </ReasonColumn>
+          <ReasonColumn
+            className= "pros"
+            title="Pros"
+            reasons={pros}
+            formOnSubmit={addPro}
+            formButtonIcon={<ThumbsUpSVG />}
+          />
+          <ReasonColumn
+            className= "cons"
+            title="Cons"
+            reasons={cons}
+            formOnSubmit={addCon}
+            formButtonIcon={<ThumbsDownSVG />}
+          />
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { useState, SyntheticEvent } from "react";
+import { useState, SyntheticEvent } from 'react';
 
 export const useInput = (initialValue: string) => {
   const [value, setValue] = useState(initialValue);

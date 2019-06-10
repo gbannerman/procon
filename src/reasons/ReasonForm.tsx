@@ -2,7 +2,6 @@ import React, { SyntheticEvent } from 'react';
 import './ReasonForm.scss';
 import { useInput } from '../hooks/useInput';
 import { Reason } from '../models/Reason';
-import 'react-dates/lib/css/_datepicker.css';
 
 interface ReasonFormProps {
   onSubmit: (reason: Reason) => void;

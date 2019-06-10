@@ -4,18 +4,14 @@ import ReasonForm from './ReasonForm';
 import './ReasonColumn.scss';
 
 interface ReasonColumnProps {
-  children: {
-    className: string;
-    title: string;
-    reasons: Reason[];
-    formOnSubmit: (reason: Reason) => void;
-    formButtonIcon: React.ReactNode;
-  }
+  className: string;
+  title: string;
+  reasons: Reason[];
+  formOnSubmit: (reason: Reason) => void;
+  formButtonIcon: React.ReactNode;
 }
 
-const ReasonColumn: React.FC<ReasonColumnProps> = ({children}) => {
-
-  const {className, title, reasons, formOnSubmit, formButtonIcon} = children;
+const ReasonColumn: React.FC<ReasonColumnProps> = ({className, title, reasons, formOnSubmit, formButtonIcon}) => {
 
   return (
     <div className={`column ${className}`}>

@@ -1,5 +1,5 @@
 export interface Reason {
-    id: number;
-    text: string;
-    value?: number;
+  id: number;
+  text: string;
+  value?: number;
 }
