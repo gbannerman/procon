@@ -2,7 +2,7 @@ import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import ReasonColumn from './ReasonColumn';
 
-describe("ReasonColumn", () => {
+describe('ReasonColumn', () => {
   let wrapper: ReactWrapper;
   let formOnSubmit: jest.Mock;
   const reason1 = { id: 1, text: 'Reason 1'};
@@ -27,7 +27,7 @@ describe("ReasonColumn", () => {
   });
 
   it('renders column title', () => {
-    expect(wrapper.find('.column__title').text()).toBe("Cons");
+    expect(wrapper.find('.column__title').text()).toBe('Cons');
   });
 
   it('renders each reason', () => {

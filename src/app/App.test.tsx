@@ -2,7 +2,7 @@ import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import App from './App';
 
-describe("App", () => {
+describe('App', () => {
   let wrapper: ReactWrapper;
 
   beforeEach(() => {

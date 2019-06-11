@@ -2,7 +2,7 @@ import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import ReasonForm from './ReasonForm';
 
-describe("ReasonForm", () => {
+describe('ReasonForm', () => {
   let wrapper: ReactWrapper;
   let onSubmit: jest.Mock;
 
