@@ -21,6 +21,8 @@
     "test:debug": "node --inspect-brk ./node_modules/.bin/react-scripts test --runInBand --no-cache",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "ci-deploy": "gh-pages -d build --user 'Gavin Bannerman <gbannerman@scottlogic.co.uk>' --message '[skip ci] Updates'",
+    "gh-help": "gh-pages --help",
     "eject": "react-scripts eject",
     "lint": "eslint ./src/**/*.{ts,tsx} --fix"
   },
