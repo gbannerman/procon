@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReasonColumn from '../reasons/ReasonColumn';
 import { Reason } from '../models/Reason';
 import Header from '../header/Header';
@@ -6,16 +6,21 @@ import ThumbsUpSVG from '../svg/ThumbsUpSVG';
 import ThumbsDownSVG from '../svg/ThumbsDownSVG';
 import './App.scss';
 
+import { useSelector, useDispatch } from 'react-redux'
+import { ReasonActions } from '../state/reasons';
+import { AppState } from '../state/index';
+
 const App: React.FC = () => {
-  const [pros, setPros] = useState<Reason[]>([]);
-  const [cons, setCons] = useState<Reason[]>([]);
+  const pros = useSelector((state: AppState) => state.reasons.pros);
+  const cons = useSelector((state: AppState) => state.reasons.cons);
+  const dispatch = useDispatch();
 
   const addPro = (pro: Reason) => {
-    setPros([...pros, { ...pro, id: pros.length + 1 }]);
+    dispatch(ReasonActions.addPro({ ...pro, id: pros.length + 1 }));
   }
 
   const addCon = (con: Reason) => {
-    setCons([...cons, { ...con, id: cons.length + 1 }]);
+    dispatch(ReasonActions.addCon({ ...con, id: cons.length + 1 }));
   }
 
   return (
