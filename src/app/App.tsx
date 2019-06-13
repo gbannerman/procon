@@ -11,8 +11,11 @@ import { ReasonActions } from '../state/reasons';
 import { AppState } from '../state/index';
 import { BinOperations, BinActions } from '../state/bin';
 import { useReduxInput } from '../hooks/useReduxInput';
+import { RouteComponentProps } from 'react-router';
 
-const App: React.FC = () => {
+interface AppParams { id: string }
+
+const App: React.FC<RouteComponentProps<AppParams>> = ({ match }) => {
   const pros = useSelector((state: AppState) => state.reasons.pros);
   const cons = useSelector((state: AppState) => state.reasons.cons);
   const dispatch = useDispatch();
@@ -30,8 +33,10 @@ const App: React.FC = () => {
   }
 
   useEffect(() => {
-    dispatch(BinOperations.loadBin('5d00da74c8ef78426778f0f6'));
-  }, [dispatch]);
+    if (match.params.id) {
+      dispatch(BinOperations.loadBin(match.params.id));
+    }
+  }, [dispatch, match.params.id]);
 
   return (
     <div className="App">

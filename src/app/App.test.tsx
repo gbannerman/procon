@@ -4,6 +4,7 @@ import App from './App';
 import { AppState } from '../state';
 import { ReasonActions } from '../state/reasons';
 import { BinOperations, BinActions } from '../state/bin';
+import { getMockRouterProps } from '../testUtils';
 
 jest.mock('react-redux');
 
@@ -20,16 +21,17 @@ describe('App', () => {
     }
   };
   let mockDispatch = jest.fn();
+  let mockRouterProps = getMockRouterProps({id: '5d00da74c8ef78426778f0f7'});
 
   beforeEach(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (require('react-redux') as any).__setMockStore(mockStore);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (require('react-redux') as any).__setMockDispatch(mockDispatch);
+    
+    wrapper = mount(<App {...mockRouterProps} />);
 
     mockDispatch.mockClear();
-    
-    wrapper = mount(<App />);
   });
 
   it('renders the header', () => {
@@ -40,18 +42,36 @@ describe('App', () => {
     expect(wrapper.find('ReasonColumn').length).toBe(2);
   });
 
-  it('fetches bin on load', () => {
+  describe('checks for id of bin from router props', () => {
+
     let mockGetBinOperationCreator = jest.fn();
     let mockGetBinOperation = jest.fn();
 
-    mockGetBinOperationCreator.mockReturnValue(mockGetBinOperation);
-    BinOperations.loadBin = mockGetBinOperationCreator;
-    
-    wrapper = mount(<App />);
+    beforeEach(() => {
+      mockGetBinOperationCreator.mockClear();
+      mockGetBinOperation.mockClear();
+      mockGetBinOperationCreator.mockReturnValue(mockGetBinOperation);
+      BinOperations.loadBin = mockGetBinOperationCreator;
+    });
 
-    expect(mockGetBinOperationCreator).toHaveBeenCalledTimes(1);
-    expect(mockGetBinOperationCreator).toHaveBeenCalledWith('5d00da74c8ef78426778f0f6');
-    expect(mockDispatch).toHaveBeenCalledWith(mockGetBinOperation);
+    it('fetches if id set', () => {
+      mockRouterProps = getMockRouterProps({id: '5d00da74c8ef78426778f0f7'})
+      
+      wrapper = mount(<App {...mockRouterProps} />);
+  
+      expect(mockGetBinOperationCreator).toHaveBeenCalledTimes(1);
+      expect(mockGetBinOperationCreator).toHaveBeenCalledWith('5d00da74c8ef78426778f0f7');
+      expect(mockDispatch).toHaveBeenCalledWith(mockGetBinOperation);
+    });
+
+    it('does not fetch if no id', () => {
+      mockRouterProps = getMockRouterProps({id: ''});
+      
+      wrapper = mount(<App {...mockRouterProps} />);
+  
+      expect(mockGetBinOperationCreator).not.toHaveBeenCalled();
+      expect(mockDispatch).not.toHaveBeenCalledWith(mockGetBinOperation);
+    });
   });
 
   describe('renders decision question correctly', () => {
@@ -100,7 +120,7 @@ describe('App', () => {
     let getConColumn: () => ReactWrapper;
 
     beforeEach(() => {
-      wrapper = mount(<App />);
+      wrapper = mount(<App {...mockRouterProps} />);
       getConColumn = () => wrapper.find('ReasonColumn').at(1);
     });
 
