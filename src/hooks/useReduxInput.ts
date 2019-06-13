@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../state';
 import { ActionWithPayload } from '../state/stateUtils';
 
-export const useReduxInput = (selector: (state: AppState) => string, updateAction: (payload: string) => ActionWithPayload<any, string>) => {
+export const useReduxInput = (selector: (state: AppState) => string, updateAction: (payload: string) => ActionWithPayload<string, string>) => {
   const state = useSelector(selector);
   const dispatch = useDispatch();
 

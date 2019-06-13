@@ -9,20 +9,22 @@ jest.mock('react-redux');
 
 describe('App', () => {
   let wrapper: ReactWrapper;
-  let mockStore = {
+  let mockStore: AppState = {
     bin: {
       question: 'Should this test pass?',
       id: ''
     },
     reasons: {
-      pros: [{ id: 1, text: "Existing pro"}],
-      cons: [{ id: 1, text: "Existing con"}]
+      pros: [{ id: 1, text: 'Existing pro'}],
+      cons: [{ id: 1, text: 'Existing con'}]
     }
   };
   let mockDispatch = jest.fn();
 
   beforeEach(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (require('react-redux') as any).__setMockStore(mockStore);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (require('react-redux') as any).__setMockDispatch(mockDispatch);
 
     mockDispatch.mockClear();

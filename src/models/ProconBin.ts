@@ -1,4 +1,4 @@
-import { Reason } from "./Reason";
+import { Reason } from './Reason';
 
 export interface ProconBin {
   id: string;
