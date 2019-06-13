@@ -12,6 +12,6 @@ const instance = axios.create({
 });
 
 export async function getBin(id: string) {
-  const response = await instance.get(`b/${id}`);
+  const response = await instance.get(`b/${id}/latest`);
   return response.data as ProconBin;
 }
