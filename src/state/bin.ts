@@ -1,8 +1,9 @@
 import { ProconBin } from '../models/ProconBin';
 import { createAction, ActionsUnion } from './stateUtils';
-import { getBin } from '../services/JsonBin';
+import { getBin, createBin, updateBin } from '../services/JsonBin';
 import { Dispatch } from 'redux';
 import { ReasonActions } from './reasons';
+import { History } from 'history';
 
 export enum ActionTypes {
   BIN_LOADED = 'procon/bin/BIN_LOADED',
@@ -21,6 +22,17 @@ export const BinOperations = {
       dispatch(ReasonActions.setPros(bin.pros));
       dispatch(ReasonActions.setCons(bin.cons));
     })
+  ),
+  createBin: (bin: ProconBin, history: History) => ((dispatch: Dispatch) => createBin(bin)
+    .then((bin) =>  {
+      dispatch(BinActions.binLoaded(bin));
+      history.push(`/${bin.id}`);
+    })
+  ),
+  updateBin: (bin: ProconBin) => ((dispatch: Dispatch) => updateBin(bin)
+    .then((bin) =>  {
+      dispatch(BinActions.binLoaded(bin));
+    })
   )
 }
 
@@ -28,7 +40,7 @@ export type BinActions = ActionsUnion<typeof BinActions>
 export type BinOperations = ActionsUnion<typeof BinOperations>
 
 export interface BinState {
-  id: string;
+  id?: string;
   question: string;
 }
 

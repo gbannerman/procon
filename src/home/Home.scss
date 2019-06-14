@@ -1,12 +1,25 @@
 @import '../style/all';
 
-.App {
-  .App__content {
+.Home {
+  .Header__save-button {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    
+    svg {
+      fill: $color-light-text;
+    }
+  }
+
+  .Home__content {
     text-align: center;
     margin: 0 auto;
     max-width: 1000px;
 
-    .App__content__decision {
+    .Home__content__decision {
       margin-bottom: 30px;
       padding: 10px;
 
@@ -17,7 +30,7 @@
       }
     }
 
-    .App__content__pros-cons-container {
+    .Home__content__pros-cons-container {
       font-size: 18px;
       display: flex;
       flex-direction: row;

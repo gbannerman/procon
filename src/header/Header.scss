@@ -15,17 +15,14 @@
     fill: $color-light-text;
   }
 
-  .Header__icon__additional {
-    line-height: 30px;
-    height: 30px;
-    vertical-align: middle;
-    font-size: 30px;
-    font-weight: normal;
-  }
-
   .Header__title {
     display: inline-block;
     margin: 5px;
     font-weight: normal;
+  }
+
+  .Header__buttons {
+    height: 30px;
+    margin-left: auto;
   }
 }

@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { store } from './state/index';
 import * as serviceWorker from './serviceWorker';
-import Root from './app/Root';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import HomeContainer from './home/HomeContainer';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Root />
+    <Router>
+      <Route path="/:id" component={HomeContainer}></Route>
+      <Route path="/" exact component={HomeContainer}></Route>
+    </Router>
   </Provider>,
   document.getElementById('root'));
 
